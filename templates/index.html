@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Flight Price Tracker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>✈️ AI Flight Price Tracker</h1>
+        <div class="form-section">
+            <div class="input-group">
+                <label for="origin">From (IATA):</label>
+                <input type="text" id="origin" value="BOM">
+            </div>
+            <div class="input-group">
+                <label for="destination">To (IATA):</label>
+                <input type="text" id="destination" value="DEL">
+            </div>
+            <div class="input-group">
+                <label for="depart_date">Depart Date:</label>
+                <input type="date" id="depart_date" value="2025-04-01">
+            </div>
+            <div class="input-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" value="your@email.com">
+            </div>
+            <div class="input-group">
+                <label for="adults">Adults:</label>
+                <input type="number" id="adults" value="1" min="1" max="9">
+            </div>
+            <div class="input-group">
+                <label for="cabin_class">Class:</label>
+                <select id="cabin_class">
+                    <option value="ECONOMY">Economy</option>
+                    <option value="PREMIUM_ECONOMY">Premium Economy</option>
+                    <option value="BUSINESS">Business</option>
+                </select>
+            </div>
+            <div class="button-group">
+                <button id="search-flights-btn">Search Flights</button>
+                <button id="set-alert-btn">Set Price Alert</button>
+                <button id="show-history-btn">View Price History</button>
+            </div>
+        </div>
+
+        <div id="results-section">
+            <h2>Flight Results</h2>
+            <table id="flights-table">
+                <thead>
+                    <tr>
+                        <th>Airline</th>
+                        <th>Price (USD)</th>
+                        <th>Departure Time</th>
+                        <th>Date Checked</th>
+                        <th>Origin</th>
+                        <th>Destination</th>
+                        <th>Depart Date</th>
+                    </tr>
+                </thead>
+                <tbody id="flights-body"></tbody>
+            </table>
+        </div>
+
+        <div id="history-section" style="display: none;">
+            <h2>Price History</h2>
+            <canvas id="price-chart"></canvas>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html>
